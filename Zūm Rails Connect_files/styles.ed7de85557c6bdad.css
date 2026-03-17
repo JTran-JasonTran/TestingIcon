@@ -1317,3 +1317,10 @@ body {
 @-webkit-keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
 @keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
 
+  .screenAlert-icon.screenAlert-success:before,
+  .screenAlert-icon.screenAlert-success:after,
+  .screenAlert-icon.screenAlert-error:before,
+  .screenAlert-icon.screenAlert-error:after {
+    display: none !important;
+  }
+
