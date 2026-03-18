@@ -1296,7 +1296,7 @@ body {
 
 
 /* CSS SUCCESS */
-.screenAlert-icon.screenAlert-success{border-color:#28C76F; z-index: 4;}
+.screenAlert-icon.screenAlert-success{border-color:#28C76F;}
 .screenAlert-icon.screenAlert-success:after,
 .screenAlert-icon.screenAlert-success:before{background-color:transparent!important;content:'';height:120px;position:absolute;-webkit-transform:rotate(45deg);transform:rotate(45deg);width:60px}
 .screenAlert-icon.screenAlert-success:before{border-radius:120px 0 0 120px;left:-33px;top:-7px;-webkit-transform-origin:60px 60px;transform-origin:60px 60px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
