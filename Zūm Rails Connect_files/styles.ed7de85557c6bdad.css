@@ -1342,21 +1342,41 @@ body {
 @keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
 
 
+/* 1. Ensure the container has a high z-index and clips the masks */
 .screenAlert-icon.screenAlert-success {
     border-color: #28C76F;
-    z-index: 10; /* Bring the border to the front */
-    background-color: transparent; 
-    overflow: hidden; /* Keeps the masks inside the circle bounds */
+    position: relative;
+    z-index: 2; /* Keeps the border on top */
 }
 
+/* 2. Fix the masks (the white blocks) */
 .screenAlert-icon.screenAlert-success:before,
 .screenAlert-icon.screenAlert-success:after {
-    background-color: #fff; /* Match your page background */
-    z-index: 1; /* Keep these behind the green border */
+    background-color: #fff !important; /* Must match your background */
+    position: absolute;
+    width: 60px;
+    height: 120px;
+    content: '';
+    /* This ensures the masks don't sit ON the border */
+    z-index: -1; 
+    transform: rotate(45deg);
 }
 
-.screenAlert-icon.screenAlert-success .screenAlert-line {
-    z-index: 11; /* Ensure the checkmark lines are at the very top */
+/* 3. Specifically position the masks to stay inside the center */
+.screenAlert-icon.screenAlert-success:before {
+    border-radius: 120px 0 0 120px;
+    top: -7px;
+    left: -33px;
+    transform-origin: 60px 60px;
+    transform: rotate(-45deg);
+}
+
+.screenAlert-icon.screenAlert-success:after {
+    border-radius: 0 120px 120px 0;
+    top: -11px;
+    left: 30px;
+    transform-origin: 0 60px;
+    transform: rotate(-45deg);
 }
 
 
