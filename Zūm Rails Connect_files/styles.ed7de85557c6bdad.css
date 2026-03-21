@@ -1348,28 +1348,29 @@ body {
     display: none !important;
 } */
 
-@-webkit-keyframes animateSuccessTip {
-  0%, 54% { width: 0; left: 1px; top: 19px; }
-  70% { width: 35px; left: 2px; top: 30px; } /* Giảm từ 50px xuống 35px, chỉnh lại left/top để không lệch tâm */
-  84% { width: 20px; left: 18px; top: 46px; }
-  100% { width: 25px; left: 14px; top: 45px; }
-}
-
 @keyframes animateSuccessTip {
   0%, 54% { width: 0; left: 1px; top: 19px; }
-  70% { width: 35px; left: 2px; top: 30px; }
-  84% { width: 20px; left: 18px; top: 46px; }
+  70% { width: 38px; left: -4px; top: 33px; } /* Thu hẹp độ phóng */
+  84% { width: 17px; left: 21px; top: 48px; }
   100% { width: 25px; left: 14px; top: 45px; }
 }
 
-@-webkit-keyframes animateSuccessLong {
-  0%, 65% { width: 0; right: 46px; top: 54px; }
-  84% { width: 50px; right: 5px; top: 35px; } /* Giảm từ 55px xuống 50px, chỉnh lại right để khớp mượt hơn */
-  100% { width: 47px; right: 8px; top: 38px; }
+/* Thêm bản -webkit- cho Safari/Chrome cũ */
+@-webkit-keyframes animateSuccessTip {
+  0%, 54% { width: 0; left: 1px; top: 19px; }
+  70% { width: 38px; left: -4px; top: 33px; }
+  84% { width: 17px; left: 21px; top: 48px; }
+  100% { width: 25px; left: 14px; top: 45px; }
 }
 
 @keyframes animateSuccessLong {
   0%, 65% { width: 0; right: 46px; top: 54px; }
-  84% { width: 50px; right: 5px; top: 35px; }
+  84% { width: 52px; right: 4px; top: 35px; } /* Co giãn nhẹ từ 52px về 47px */
+  100% { width: 47px; right: 8px; top: 38px; }
+}
+
+@-webkit-keyframes animateSuccessLong {
+  0%, 65% { width: 0; right: 46px; top: 54px; }
+  84% { width: 52px; right: 4px; top: 35px; }
   100% { width: 47px; right: 8px; top: 38px; }
 }
