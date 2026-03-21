@@ -1362,4 +1362,14 @@ body {
   100% { width: 25px; left: 14px; top: 45px; }
 }
 
+@-webkit-keyframes animateSuccessLong {
+  0%, 65% { width: 0; right: 46px; top: 54px; }
+  84% { width: 50px; right: 5px; top: 35px; } /* Giảm từ 55px xuống 50px, chỉnh lại right để khớp mượt hơn */
+  100% { width: 47px; right: 8px; top: 38px; }
+}
 
+@keyframes animateSuccessLong {
+  0%, 65% { width: 0; right: 46px; top: 54px; }
+  84% { width: 50px; right: 5px; top: 35px; }
+  100% { width: 47px; right: 8px; top: 38px; }
+}
