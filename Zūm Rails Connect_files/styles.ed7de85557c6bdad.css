@@ -1349,28 +1349,84 @@ body {
 } */
 
 @keyframes animateSuccessTip {
-  0%, 54% { width: 0; left: 1px; top: 19px; }
-  70% { width: 38px; left: -4px; top: 33px; } /* Thu hẹp độ phóng */
-  84% { width: 17px; left: 21px; top: 48px; }
-  100% { width: 25px; left: 14px; top: 45px; }
+0%, 54% { 
+    width: 0; 
+    left: 1px; 
+    top: 34px; /* Hạ thấp điểm bắt đầu (cũ là 19px) */
+  }
+  70% { 
+    width: 38px; 
+    left: -4px; 
+    top: 36px; /* Giữ cao độ ổn định, không nhảy vọt */
+  }
+  84% { 
+    width: 17px; 
+    left: 21px; 
+    top: 48px; 
+  }
+  100% { 
+    width: 25px; 
+    left: 14px; 
+    top: 45px; 
+  }
 }
 
 /* Thêm bản -webkit- cho Safari/Chrome cũ */
 @-webkit-keyframes animateSuccessTip {
-  0%, 54% { width: 0; left: 1px; top: 19px; }
-  70% { width: 38px; left: -4px; top: 33px; }
-  84% { width: 17px; left: 21px; top: 48px; }
-  100% { width: 25px; left: 14px; top: 45px; }
+0%, 54% { 
+    width: 0; 
+    left: 1px; 
+    top: 34px; /* Hạ thấp điểm bắt đầu (cũ là 19px) */
+  }
+  70% { 
+    width: 38px; 
+    left: -4px; 
+    top: 36px; /* Giữ cao độ ổn định, không nhảy vọt */
+  }
+  84% { 
+    width: 17px; 
+    left: 21px; 
+    top: 48px; 
+  }
+  100% { 
+    width: 25px; 
+    left: 14px; 
+    top: 45px; 
+  }
 }
 
 @keyframes animateSuccessLong {
-  0%, 65% { width: 0; right: 46px; top: 54px; }
-  84% { width: 52px; right: 4px; top: 35px; } /* Co giãn nhẹ từ 52px về 47px */
-  100% { width: 47px; right: 8px; top: 38px; }
+0%, 65% { 
+    width: 0; 
+    right: 46px; 
+    top: 54px; 
+  }
+  84% { 
+    width: 52px; 
+    right: 4px; 
+    top: 35px; /* Giữ đà văng nhẹ để mượt */
+  }
+  100% { 
+    width: 47px; 
+    right: 8px; 
+    top: 38px; 
+  }
 }
 
 @-webkit-keyframes animateSuccessLong {
-  0%, 65% { width: 0; right: 46px; top: 54px; }
-  84% { width: 52px; right: 4px; top: 35px; }
-  100% { width: 47px; right: 8px; top: 38px; }
+0%, 65% { 
+    width: 0; 
+    right: 46px; 
+    top: 54px; 
+  }
+  84% { 
+    width: 52px; 
+    right: 4px; 
+    top: 35px; /* Giữ đà văng nhẹ để mượt */
+  }
+  100% { 
+    width: 47px; 
+    right: 8px; 
+    top: 38px; 
+  }
 }
