@@ -1,0 +1,1379 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~pages-iframe-add-user-wrapper-add-user-wrapper-module~pages-iframe-add-user-wrapper-add-user~528c78f9"],{
+
+/***/ "0zL+":
+/*!**********************************************!*\
+  !*** ./src/app/services/customer.service.ts ***!
+  \**********************************************/
+/*! exports provided: hasCaPaymentMethodsEnabled, hasUsPaymentMethodsEnabled, isCaCustomer, isUsCustomer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasCaPaymentMethodsEnabled", function() { return hasCaPaymentMethodsEnabled; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasUsPaymentMethodsEnabled", function() { return hasUsPaymentMethodsEnabled; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCaCustomer", function() { return isCaCustomer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isUsCustomer", function() { return isUsCustomer; });
+function hasCaPaymentMethodsEnabled(customer) {
+    return ((customer === null || customer === void 0 ? void 0 : customer.TransacionMethodCreditCardEnabled) || (customer === null || customer === void 0 ? void 0 : customer.TransacionMethodVisaDirectEnabled) || (customer === null || customer === void 0 ? void 0 : customer.TransacionMethodInteracEnabled) || (customer === null || customer === void 0 ? void 0 : customer.TransacionMethodEftEnabled));
+}
+function hasUsPaymentMethodsEnabled(customer) {
+    return ((customer === null || customer === void 0 ? void 0 : customer.TransactionMethodAchEnabled) || (customer === null || customer === void 0 ? void 0 : customer.TransactionMethodDebitCardEnabled) || (customer === null || customer === void 0 ? void 0 : customer.TransactionMethodCreditCardUsEnabled) || (customer === null || customer === void 0 ? void 0 : customer.TransactionMethodMoneyTransferEnabled));
+}
+function isCaCustomer(customer) {
+    return hasCaPaymentMethodsEnabled(customer) && !hasUsPaymentMethodsEnabled(customer);
+}
+function isUsCustomer(customer) {
+    return hasUsPaymentMethodsEnabled(customer) && !hasCaPaymentMethodsEnabled(customer);
+}
+
+
+/***/ }),
+
+/***/ "2g2N":
+/*!*******************************************!*\
+  !*** ./src/app/services/toast.service.ts ***!
+  \*******************************************/
+/*! exports provided: ToastService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastService", function() { return ToastService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/snack-bar */ "dNgK");
+
+
+var ToastService = /** @class */ (function () {
+    function ToastService(toast) {
+        this.toast = toast;
+        this.hztl = 'center';
+        this.vert = 'top';
+        this.durationSeconds = 5;
+    }
+    ToastService.prototype.notify = function (message) {
+        var config = {
+            horizontalPosition: this.hztl,
+            verticalPosition: this.vert,
+            duration: this.durationSeconds * 1000
+        };
+        this.toast.open(message, "Dismiss", config);
+    };
+    ToastService.ɵfac = function ToastService_Factory(t) { return new (t || ToastService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_1__["MatSnackBar"])); };
+    ToastService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: ToastService, factory: ToastService.ɵfac, providedIn: 'root' });
+    return ToastService;
+}());
+
+
+
+/***/ }),
+
+/***/ "3AQj":
+/*!******************************************************************************************************************************************!*\
+  !*** ./src/app/pages/iframe/forms/visa-debit-form/aggregation-verification/aggregation/aggregation-terms/aggregation-terms.component.ts ***!
+  \******************************************************************************************************************************************/
+/*! exports provided: AggregationTermsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AggregationTermsComponent", function() { return AggregationTermsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_services_page_title_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/page-title.service */ "KN+2");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngx-translate/core */ "sYmb");
+
+
+
+
+var AggregationTermsComponent = /** @class */ (function () {
+    function AggregationTermsComponent(pageTitleService) {
+        this.pageTitleService = pageTitleService;
+        this.onTermsSelected = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.pageTitleService.updatePageTitle('Terms and conditions');
+    }
+    AggregationTermsComponent.prototype.ngOnInit = function () {
+    };
+    AggregationTermsComponent.prototype.onClose = function () {
+        this.onTermsSelected.emit(false);
+    };
+    AggregationTermsComponent.prototype.onAccept = function () {
+        this.onTermsSelected.emit(true);
+    };
+    AggregationTermsComponent.ɵfac = function AggregationTermsComponent_Factory(t) { return new (t || AggregationTermsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_page_title_service__WEBPACK_IMPORTED_MODULE_1__["PageTitleService"])); };
+    AggregationTermsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AggregationTermsComponent, selectors: [["app-aggregation-terms"]], inputs: { customerName: "customerName" }, outputs: { onTermsSelected: "onTermsSelected" }, decls: 140, vars: 31, consts: [["id", "padDialogModal", 1, "w-full"], [1, "text-sm", "flex", "flex-col", "w-full", "list", "overflow-y-auto", "overflow-x-hidden", 2, "height", "335px"], [1, "font-bold"], ["rel", "noopener noreferrer", "href", "https://zumrails.com/privacy-policy", "target", "_blank", 1, "fake-link"], ["href", "https://knowledge-base.zumrails.com", "rel", "noopener noreferrer", "target", "_blank", 1, "fake-link"], [1, "pl-4"], [1, "w-full", "mt-4", "mb-2", "bg-white", "bottom-0", "flex", "content-center", "text-right", "justify-between", "relative"], [1, "hover:bg-gray-100", "w-full", "button", "border", "rounded", "shadow", "button-cancel", "focus:outline-non", 3, "click"], [1, "center-text-flex"], [1, "button", "button-company-color", "button-text-color", "w-full", "h-auto", "ml-1", "focus:outline-none", 3, "click"]], template: function AggregationTermsComponent_Template(rf, ctx) { if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "INSTANT DEPOSIT - TERMS OF SERVICE");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Last updated: June 15, 2022");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " Your use of Instant Deposit enabled by Z\u016Bm Rails Inc. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "strong");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "(\u201CZ\u016Bm Rails\u201D)");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "strong");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "\u201CWebsite\u201D");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ") is subject to the following terms. These Instant Deposit Terms of Service (");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "strong");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "\u201CTerms of Service\u201D");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "strong");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "\u201Cyou\u201D");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "), and govern your use of the Bank Verification Service (the ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "strong");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "\u201CService\u201D");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "1. General.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, " We use the Service to allow you to connect your bank account. Connecting your bank account helps us better support your requested payments, including by verifying your bank account and accelerating your payments where possible. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "2. Using the Service.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, " If you choose to enable the Service, Z\u016Bm Rails will ask you to connect your bank account. If you connect your bank account, you will provide your bank credentials (including your user name and password) to Z\u016Bm Rails\u2019 (");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "strong");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](33, "\u201CService Provider\u201D");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "), who will only use your credentials to retrieve bank account data for your requested transactions, including the following: ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, " - contact information (such as your name, email address, phone number, and address), and ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, " - account details (such as your account type and bank, branch, and account numbers). ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40, " What is collected from your account will vary depending in part on what your bank makes available. Z\u016Bm Rails will then store and use this information to better support your future requested payments with us, including by verifying your bank account and accelerating your payments where possible. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, " Z\u016Bm Rails will also transfer to its banking partner the account details in order to debit your account at the time of your requested payments. By connecting your bank account, you also provide Z\u016Bm Rails with the authority to share certain account details with us (in the case of your account number, we will only receive the last 4 digits) to support your customer relationship with us, such as information for record keeping. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, " The API, or similar service, is an essential component of the Service and you cannot proceed with the Service unless you agree to use the API or similar service. In the event that the Z\u016Bm Rails API is unavailable, you agree that Z\u016Bm Rails will be entitled to select a replacement Service Provider for the time period in which the Z\u016Bm Rails API is unavailable. Z\u016Bm Rail will be solely liable to you for any damages, losses, or otherwise resulting from its use of a replacement Service Provider. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "3. Data Privacy.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, " By using the Service, you consent to the collection, use, disclosure, and retention of your personal data. Z\u016Bm Rails has its own privacy policy and for more information, please visit their website ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "a", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "(https://zumrails.com/privacy-policy)");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](51);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "a", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](53, "(https://knowledge-base.zumrails.com)");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "br");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "4. Grant of Power of Attorney.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](60, " You grant Z\u016Bm Rails a limited power of attorney, and you appoint Z\u016Bm Rails as your attorney-in-fact and agent in all capacities to access your selected account(s), retrieve and store information as described above, to provide you the Service and as permitted by applicable laws and regulations. You agree that when Z\u016Bm Rails accesses and retrieves your information from your selected account(s), Z\u016Bm Rails is acting as your agent, and not the agent of any third-party banks. You agree that third-party banks shall be entitled to rely on the foregoing authorization, agency, and power of attorney granted by you. You understand and agree that the Service is not endorsed or sponsored by any third party whose account(s) are accessible through the Service. The power of attorney that you grant Z\u016Bm Rails may be revoked at any time by deleting the information you shared with Z\u016Bm Rails, as the case may be, or by otherwise discontinuing use of this Service. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62, "5. Interac and the Service.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, " If you are using the Service in conjunction with Interac, you are not permitted to initiate or receive any third-party transactions. We reserve the right to terminate, suspend or revoke access to the Service under Section 14 if you engage in such transactions. We also may close your account. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "6. Z\u016Bm Rails' Role.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](70, "7. Proprietary Rights.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](72);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](74, "8. Representations and Warranties.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](76, "For Individuals:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](78, "By using the Service you represent and warrant that you:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "p", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](80, " (a) are at least the age of majority (which in most jurisdictions in Canada, this is either 18 or 19 years old) in the jurisdiction in which you are located; ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "p", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](82, " (b) will not use the Service for any fraudulent, unlawful or abusive purpose; and ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "p", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](84, " (c) you have the lawful right to authorize Z\u016Bm Rails to access your bank account, or your company\u2019s bank account, as the case may be, and to use your financial data ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](86, "For Sole Proprietorships, Partnerships and Corporations:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88, "By using the Service you represent and warrant:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "p", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](90, " (1) it is a sole proprietorship/partnership/corporation, duly organized, validly existing and in good standing; ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "p", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](92, " (b) it has the full right, power and authority to enter into these terms; ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "p", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](94, " (c) your acceptance of these terms have been duly authorized by all necessary action; ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "p", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](96, " (d) The acceptance of these terms will not violate, conflict with, require consent under, or result in any breach or default under (i) any of its organizational documents (including its partnership agreement, its certificate of incorporation and by-laws, as applicable), (ii) any applicable laws or (iii) the provisions of any contract or agreement to which it is a party or to which any of its material assets are bound. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](98, "9. Disclaimers.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](100, " The laws in some jurisdictions, including Quebec, prohibit or limit the disclaimer of certain warranties and conditions or the exclusion or limitation of certain liabilities, and so the disclaimers and liability exclusions and limitations in these Terms of Service might not apply to you. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](102);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](103, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](104, "10. Limitations of Liability; Force Majeure.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](106, " To the maximum extent permitted by applicable law, in no event, and under no circumstances shall any Disclaiming Entity be responsible or liable to you or any third party under any circumstances for any indirect, consequential, special, punitive or exemplary, damages or losses, including but not limited to damages for loss of profits, goodwill, use, data, or other intangible losses, which may be incurred in connection with the Service, any Disclaiming Entity, or arising from or relating to these Terms of Service, any goods, services, or information purchased, received, sold, or paid for and facilitated by the Service, unauthorized access to or alteration of your transmissions or data, or any other matter relating to the Service. This section 10 is a comprehensive exclusion and limitation of liability and applies to liability under any theory (including contract, tort, strict liability, and statutory liability), regardless of any negligence or other fault or wrongdoing (including fundamental breach or gross negligence) by or on behalf of any Disclaiming Entity or any of its personnel, even if other remedies are not available or do not adequately compensate for the loss or damage, even if a Disclaiming Entity knows or ought to have known of the possibility of the loss or damage being incurred, and regardless of whether or not the loss or damage was foreseeable. Without limiting the foregoing, and to the maximum extent permitted by applicable law, in no event, and under no circumstances shall the Disclaiming Entities\u2019 total cumulative liability related to the Service, any Disclaiming Entity, or arising from or relating to these Terms of Service exceed $10 CAD dollars. Each party acknowledges that the other party has entered into these Terms of Service relying on the limitations of liability stated herein and that those limitations are an essential basis of the bargain between the parties. In addition to and without limiting any of the foregoing, no Disclaiming Entity shall be liable or responsible to you, nor be deemed to have defaulted under or breached these Terms of Service, for any failure or delay in fulfilling or performing any term of these Terms of Service, when and to the extent such failure or delay is caused by or results from acts beyond the Disclaiming Entity\u2019s reasonable control, including, without limitation, the following force majeure events (\u201CForce Majeure Event(s)\u201D): (a) acts of God; (b) flood, fire, earthquake, tsunami, epidemics, pandemics including the 2019 novel coronavirus pandemic (COVID-19), or explosion; (c) war, invasion, hostilities (whether war is declared or not), terrorist threats or acts, riot, or other civil unrest; (d) government order or law; (e) actions, embargoes, or blockades in effect on or after the date of this Agreement; (f) action by any governmental authority; (g) national or regional emergency; (h) strikes, labour stoppages or slowdowns, or other industrial disturbances; (i) shortage of adequate power or transportation facilities; and (j) other similar events beyond the reasonable control of the Impacted Party. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](107, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](108, "11. Governing Law and Disputes.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](110, " These Terms of Service, the subject matter of these Terms of Service (including the Service), and all related matters will be governed by the laws of the Province of Ontario and applicable federal laws of Canada, excluding any rules regarding conflict of laws that would lead to the application of any other laws. These Terms of Service shall not be governed by the United Nations Convention on Contracts for the International Sale of Goods. Except to the extent prohibited by applicable law, all disputes arising from, connected with, or relating to these Terms of Service, the subject matter of these Terms of Service (including the Service) or any related matter will be resolved before the courts of Ontario sitting in the City of Toronto, Canada, and the parties each hereby irrevocably submit and attorn to the jurisdiction of those courts in respect of those matters. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](112, "12. Modification of Terms of Service; Notices.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](113, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](114, " We have the right to change or add to these Terms of Service at any time, solely with prospective effect, and to change, delete, discontinue, or impose conditions on the use of the Service by posting such changes on our website or any other website we maintain or we own. We may provide you with notice via email, postings on our website, or through other reasonable means. If you are an existing user of the Service, the changes will come into effect as of the effective date indicated on the notice, and your use of the Service after we notify you of any such changes constitutes your acceptance of the modified Terms of Service. In the event that you do not agree with any such modification, your sole and exclusive remedy are to terminate your use of the Service. You can access a copy of the current terms of these Terms of Service on our website at any time. You can find out when these Terms of Service were last changed by checking the \u201CLast updated\u201D date at the top of these Terms of Service. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](115, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](116, "13. Assignment.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](117, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](118, " You may not assign these Terms of Service or any rights or obligations hereunder, by operation of law or otherwise, without our prior written approval and any such attempted assignment shall be void. We reserve the right to freely assign these Terms of Service and the rights and obligations hereunder to any third party without your consent or any notice to you. Subject to the foregoing, these Terms of Service shall be binding upon and inure to the benefit of the parties hereto, their respective heirs, executors, personal representatives, successors, and permitted assigns. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](119, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](120, " 14. Termination, Suspension, or Revocation of Access. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](121, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](122);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](123, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](124, "15. Survival.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](125, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](126, " Upon termination of your use of the Service or termination of these Terms of Service for any reason, in addition to this section, the following sections shall survive termination: Sections 6 through 15. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](127, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](128, "16. Miscellaneous.");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](129, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](130);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](131, "div", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](132, "button", 7);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AggregationTermsComponent_Template_button_click_132_listener() { return ctx.onClose(); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](133, "span", 8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](134);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](135, "translate");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](136, "button", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AggregationTermsComponent_Template_button_click_136_listener() { return ctx.onAccept(); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](137, "span", 8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](138);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](139, "translate");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        } if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" from within the ", ctx.customerName, " website (the ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" are a legal agreement between ", ctx.customerName, ", Inc. (\u201C", ctx.customerName, "\u201D, \u201Cwe\u201D or \u201Cus\u201D) and you, the user of the Instant Deposit (");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](") and related matters. By using the Service, you agree to be bound by these Terms of Service, as amended by ", ctx.customerName, " from time to time, as well as to the ", ctx.customerName, " Privacy Policy. You also agree that if you are accepting these terms on behalf of another entity, you have the full authorization to do so. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](28);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](". You confirm that the information you are providing to Z\u016Bm Rails has no mistakes and is your correct information. Neither ", ctx.customerName, " nor Z\u016Bm Rails will sell or rent your personal data. Zum Rails may use your data in an anonymized manner (without identifying you) for any purpose permitted under applicable law. Please review the Z\u016Bm Rails Bank Verification FAQs ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" and the above Section 2 to learn more. Z\u016Bm Rails is not responsible or liable for the use, disclosure, or retention of your personal data by ", ctx.customerName, " and ", ctx.customerName, " is not responsible or liable for the use, disclosure, or retention of your personal data by Z\u016Bm Rails. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("If you would like to exercise any of your privacy rights, please contact ", ctx.customerName, " directly. Please contact ", ctx.customerName, " regarding inquiries concerning canceling or stopping payments. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate5"](" The Service is a way of verifying your bank account and facilitating payments for ", ctx.customerName, ", but it does not change anything else about your relationship with ", ctx.customerName, " or your bank or financial institution. You are ultimately responsible for complying with the agreements that govern your relationship with ", ctx.customerName, ", your relationship with your bank or financial institution accounts, and that govern the purchases you make using the Service. Also, ", ctx.customerName, " is the one that is responsible for making the deposited funds available in the selected ", ctx.customerName, " account when you use the Service. Z\u016Bm Rails uses reasonable efforts to keep your financial data secure. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" Using the Service does not grant you any intellectual property, proprietary, or other rights to the Service. Furthermore, you agree not to reverse engineer, disassemble, decompile, derive or otherwise transform, or attempt any of the foregoing, any of the technology used to provide the Service, whether owned or licensed by ", ctx.customerName, ", Z\u016Bm Rails, or any of its Service Providers. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](30);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate3"](" The Service, including all content, software, functions, materials, and information made available on, provided in connection with or accessible through the Service, are provided \u201Cas is\u201D and \u201Cas available\u201D. To the fullest extent permissible by law, neither ", ctx.customerName, ", Z\u016Bm Rails, nor their affiliates, and their agents, merchants or independent contractors and service providers (the \u201CDisclaiming Entities\u201D), make any representation, warranty, condition or guarantee, of any nature or kind whatsoever, whether express, implied or statutory, for the Services or the content, materials, information, and functions made accessible by the Service, including without limitation the timing of delivery of funds, whether or not the timing was in the control of ", ctx.customerName, " or Z\u016Bm Rails, or for any breach of security associated with the transmission of sensitive information through the Service. Each Disclaiming Entity disclaims without limitation, any representation, warranty, condition, or guarantee of any nature or kind with respect to the Service, non-infringement, merchantability, or fitness for a particular purpose. The Disclaiming Entities do not warrant that the functions contained in the Service will be uninterrupted or error-free. The Disclaiming Entities shall not be responsible for any service interruptions, including, but not limited to, system failures or other interruptions that may affect the receipt, processing, acceptance, completion, or settlement of payment transactions. Notwithstanding anything to the contrary in these Terms of Service, you agree that you are using the Service at your own discretion and at your own risk, and you are solely responsible for any damage to, or loss of information from your computer or mobile device, that results from the download of any Data. No advice or information, whether oral or written, obtained by you from ", ctx.customerName, " or Z\u016Bm Rails through or from the Service will create any representation, warranty, condition or guarantee not expressly stated in these Terms of Service. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" At any time, ", ctx.customerName, " may terminate these Terms of Service and suspend or revoke your access to the Service with or without notice and for any or no reason, including in the event of a suspected, attempted, or confirmed breach of your obligations pursuant to these Terms of Service. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate5"](" ", ctx.customerName, "\u2019s failure to exercise or enforce any right or provision of these Terms of Service will not be considered a waiver of that right or provision. If any provision of these Terms of Service is held by any court of competent jurisdiction to be unenforceable or invalid for any reason, then that provision will be deemed severed from these Terms of Service and the remaining provisions will continue in full force and effect and remain binding and enforceable between the parties unless as a result of the severance these Terms of Service would fail in their essential purpose. Headings are for reference purposes only and in no way define, limit, construe or describe the scope or extent of such section. These Terms of Service constitute the entire agreement between you and ", ctx.customerName, " with respect to the use of the Service. These Terms of Service describe the entire liability as between you and ", ctx.customerName, ", and set forth your exclusive remedies, with respect to the Service. These Terms of Service are not intended and shall not be construed to create any rights or remedies in any parties other than you, ", ctx.customerName, ", and Z\u016Bm Rails, and no other person will have the ability to assert any rights as a third-party beneficiary under these Terms of Service. No changes may be made to these Terms of Service except in accordance with Section 12. These Terms of Service do not limit any rights that ", ctx.customerName, " or Z\u016Bm Rails may have under trade secret, copyright, patent, or other intellectual property laws. The parties have expressly requested and required that these Terms of Service and all related documents be written in the English language. Les parties conviennent et exigent express\u00E9ment que ce contrat et tous les documents qui s\u2019y rapportent soient r\u00E9dig\u00E9s en anglais. ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](135, 27, "LABEL.NOTHANKS"));
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](139, 29, "LABEL.YESIAGRRE"));
+        } }, pipes: [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_2__["TranslatePipe"]], styles: ["p[_ngcontent-%COMP%] {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n\n.link-color[_ngcontent-%COMP%] {\n  color: blue;\n  word-break: break-word;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uLy4uLy4uL2FnZ3JlZ2F0aW9uLXRlcm1zLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7RUFDQSxzQkFBQTtBQUNGOztBQUVBO0VBQ0UsV0FBQTtFQUNBLHNCQUFBO0FBQ0YiLCJmaWxlIjoiYWdncmVnYXRpb24tdGVybXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJwIHtcbiAgcGFkZGluZy10b3A6IDAuNXJlbTtcbiAgcGFkZGluZy1ib3R0b206IDAuNXJlbTtcbn1cblxuLmxpbmstY29sb3Ige1xuICBjb2xvcjogYmx1ZTtcbiAgd29yZC1icmVhazogYnJlYWstd29yZDtcbn0iXX0= */"] });
+    return AggregationTermsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "3Qdt":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/pages/iframe/forms/visa-debit-form/aggregation-verification/error/error.module.ts ***!
+  \***************************************************************************************************/
+/*! exports provided: ErrorModule, HttpLoaderFactory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorModule", function() { return ErrorModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpLoaderFactory", function() { return HttpLoaderFactory; });
+/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngx-translate/http-loader */ "mqiu");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _error_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./error.component */ "ijhf");
+/* harmony import */ var src_app_app_global_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/app.global.module */ "uodT");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+
+var ErrorModule = /** @class */ (function () {
+    function ErrorModule() {
+    }
+    ErrorModule.ɵfac = function ErrorModule_Factory(t) { return new (t || ErrorModule)(); };
+    ErrorModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: ErrorModule });
+    ErrorModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ providers: [], imports: [[
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                src_app_app_global_module__WEBPACK_IMPORTED_MODULE_3__["GlobalModule"]
+            ]] });
+    return ErrorModule;
+}());
+
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](ErrorModule, { declarations: [_error_component__WEBPACK_IMPORTED_MODULE_2__["ErrorComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+        src_app_app_global_module__WEBPACK_IMPORTED_MODULE_3__["GlobalModule"]], exports: [_error_component__WEBPACK_IMPORTED_MODULE_2__["ErrorComponent"]] }); })();
+function HttpLoaderFactory(http) {
+    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_0__["TranslateHttpLoader"](http);
+}
+
+
+/***/ }),
+
+/***/ "DAIG":
+/*!***************************************************************************************************************************************!*\
+  !*** ./src/app/pages/iframe/forms/visa-debit-form/aggregation-verification/aggregation/aggregation-login/aggregation-login.module.ts ***!
+  \***************************************************************************************************************************************/
+/*! exports provided: AggregationLoginModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AggregationLoginModule", function() { return AggregationLoginModule; });
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _aggregation_login_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./aggregation-login.component */ "rby6");
+/* harmony import */ var _aggregation_terms_aggregation_terms_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../aggregation-terms/aggregation-terms.component */ "3AQj");
+/* harmony import */ var src_app_services_aggregation_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/aggregation.service */ "DyhI");
+/* harmony import */ var src_app_services_terms_conditions_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/terms-conditions.service */ "sj7j");
+/* harmony import */ var src_app_app_global_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/app.global.module */ "uodT");
+/* harmony import */ var _error_error_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../error/error.module */ "3Qdt");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
+/* harmony import */ var _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/autocomplete */ "/1cH");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/select */ "d3UM");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+
+
+
+
+
+
+
+
+
+var AggregationLoginModule = /** @class */ (function () {
+    function AggregationLoginModule() {
+    }
+    AggregationLoginModule.ɵfac = function AggregationLoginModule_Factory(t) { return new (t || AggregationLoginModule)(); };
+    AggregationLoginModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵdefineNgModule"]({ type: AggregationLoginModule });
+    AggregationLoginModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵdefineInjector"]({ providers: [src_app_services_aggregation_service__WEBPACK_IMPORTED_MODULE_4__["AggregationService"], src_app_services_terms_conditions_service__WEBPACK_IMPORTED_MODULE_5__["TermsConditionsService"]], imports: [[
+                _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
+                _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_10__["MatAutocompleteModule"],
+                _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__["MatFormFieldModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_11__["MatSelectModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_9__["MatInputModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ReactiveFormsModule"],
+                src_app_app_global_module__WEBPACK_IMPORTED_MODULE_6__["GlobalModule"],
+                _error_error_module__WEBPACK_IMPORTED_MODULE_7__["ErrorModule"],
+            ]] });
+    return AggregationLoginModule;
+}());
+
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵsetNgModuleScope"](AggregationLoginModule, { declarations: [_aggregation_login_component__WEBPACK_IMPORTED_MODULE_2__["AggregationLoginComponent"],
+        _aggregation_terms_aggregation_terms_component__WEBPACK_IMPORTED_MODULE_3__["AggregationTermsComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
+        _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_10__["MatAutocompleteModule"],
+        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__["MatFormFieldModule"],
+        _angular_material_select__WEBPACK_IMPORTED_MODULE_11__["MatSelectModule"],
+        _angular_material_input__WEBPACK_IMPORTED_MODULE_9__["MatInputModule"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ReactiveFormsModule"],
+        src_app_app_global_module__WEBPACK_IMPORTED_MODULE_6__["GlobalModule"],
+        _error_error_module__WEBPACK_IMPORTED_MODULE_7__["ErrorModule"]], exports: [_aggregation_login_component__WEBPACK_IMPORTED_MODULE_2__["AggregationLoginComponent"]] }); })();
+
+
+/***/ }),
+
+/***/ "K/24":
+/*!*********************************************!*\
+  !*** ./src/app/models/PaymentMethodType.ts ***!
+  \*********************************************/
+/*! exports provided: PaymentMethodType, PaymentMethodTabV2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaymentMethodType", function() { return PaymentMethodType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaymentMethodTabV2", function() { return PaymentMethodTabV2; });
+var PaymentMethodType;
+(function (PaymentMethodType) {
+    PaymentMethodType["BankAccount"] = "BankAccount";
+    PaymentMethodType["DebitCard"] = "DebitCard";
+    PaymentMethodType["CreditCard"] = "CreditCard";
+})(PaymentMethodType || (PaymentMethodType = {}));
+;
+var PaymentMethodTabV2;
+(function (PaymentMethodTabV2) {
+    PaymentMethodTabV2[PaymentMethodTabV2["Eft"] = 0] = "Eft";
+    PaymentMethodTabV2[PaymentMethodTabV2["Interac"] = 1] = "Interac";
+    PaymentMethodTabV2[PaymentMethodTabV2["VisaDirect"] = 2] = "VisaDirect";
+    PaymentMethodTabV2[PaymentMethodTabV2["Ach"] = 3] = "Ach";
+    PaymentMethodTabV2[PaymentMethodTabV2["CreditCard"] = 4] = "CreditCard";
+    PaymentMethodTabV2[PaymentMethodTabV2["DebitCard"] = 5] = "DebitCard";
+})(PaymentMethodTabV2 || (PaymentMethodTabV2 = {}));
+
+
+/***/ }),
+
+/***/ "KoA6":
+/*!************************************!*\
+  !*** ./src/app/models/Currency.ts ***!
+  \************************************/
+/*! exports provided: Currency */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Currency", function() { return Currency; });
+var Currency;
+(function (Currency) {
+    Currency["CAD"] = "CAD";
+})(Currency || (Currency = {}));
+
+
+/***/ }),
+
+/***/ "NwoP":
+/*!***************************************!*\
+  !*** ./src/app/pages/iframe/theme.ts ***!
+  \***************************************/
+/*! exports provided: setCustomTheme */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCustomTheme", function() { return setCustomTheme; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "EVdn");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+function hexToRgbA(hex, transaparency) {
+    var c;
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+        c = hex.substring(1).split('');
+        if (c.length == 3) {
+            c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c = '0x' + c.join('');
+        return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + transaparency + ')';
+    }
+    throw new Error('Bad Hex');
+}
+var setCustomTheme = function (_a) {
+    var accentColor = _a.accentColor, brandColor = _a.brandColor, foregroundColor = _a.foregroundColor, backgroundColor = _a.backgroundColor;
+    var accentColorStyle = "";
+    var brandColorStyle = "";
+    var foreGroundStyle = "";
+    var backGroundStyle = "";
+    if (brandColor) {
+        brandColorStyle = "\n    .button-company-color {\n        background-color: " + brandColor + " !important;\n    }\n\n    .button-brand{\n        background-color: " + brandColor + " !important;\n    }\n\n    .button-brand-cancel {\n      color: " + brandColor + " !important;\n      border-color: " + brandColor + " !important;\n      border: solid 2px;\n    }\n\n    .pad-button{\n      background-color: " + brandColor + " !important;\n      color: #fff !important;\n    }\n\n    .button-company-color:disabled {\n      background-color: " + hexToRgbA(brandColor, 0.50) + " !important;\n    }\n\n    .border-color-hover:hover {\n      border-color: " + brandColor + " !important;\n    }\n\n    .border-color {\n        border-color: " + brandColor + " !important;\n    }\n\n    .button-cancel {\n      color: " + brandColor + " !important;\n      border-color: " + brandColor + " !important;\n    }\n\n    .border-loader {\n      border-color: " + brandColor + ";\n    }\n\n    .header-brand-color{\n      background-color: " + brandColor + " !important;\n    }\n\n    ::-webkit-scrollbar-thumb {\n      background: " + brandColor + " !important;\n    }\n  ";
+        if (brandColor == "#ffffff" || brandColor == "#FFFFFF") {
+            brandColorStyle += "\n    .button-text-color{\n      color: black !important;\n    }";
+        }
+    }
+    if (accentColor) {
+        accentColorStyle = "\n    .text-brand-color{\n      color: " + accentColor + " !important;\n    }\n\n    .accent-color-stroke{\n        stroke: " + accentColor + " !important;\n    }\n\n    .accent-color{\n        color: " + accentColor + " !important;\n        fill: " + accentColor + " !important;\n    }\n\n    .border-color-accent-hover:hover {\n      border-color: " + accentColor + " !important;\n    }\n\n    .border-accent{\n        border-color: " + accentColor + " !important;\n    }\n\n    .mat-tab-label.mat-tab-label-active {\n        border: 2px solid " + accentColor + " !important;\n    }\n\n    input[type=\"checkbox\"]{\n      color: " + accentColor + " !important;\n      accent-color: " + accentColor + " !important;\n    }\n\n    input[type=\"radio\"]{\n        color: " + accentColor + " !important;\n        accent-color: " + accentColor + " !important;\n    }\n\n    .radio-accent:after {\n        width: 25px;\n        height: 25px;\n        border-radius: 25px;\n        top: -2px;\n        left: -1px;\n        position: relative;\n        background-color: #d1d3d1;\n        content: '';\n        display: inline-block;\n        visibility: visible;\n        border: 2px solid white;\n    }\n\n    .radio-accent:checked:after {\n        width: 25px;\n        height: 25px;\n        border-radius: 25px;\n        top: -2px;\n        left: -1px;\n        position: relative;\n        background-color:  " + accentColor + ";\n        content: '';\n        display: inline-block;\n        visibility: visible;\n        border: 2px solid white;\n    }\n\n    .icon-color{\n      color: " + accentColor + " !important;\n    }\n\n    .icon-fill{\n      fill: " + accentColor + " !important;\n    }\n\n    .selected-label{\n      color: " + accentColor + " !important;\n    }\n\n    .payment-hover:hover{\n      background-color: " + hexToRgbA(accentColor, 0.12) + " !important;\n    }\n\n    .product-item:hover{\n      background-color: " + hexToRgbA(accentColor, 0.12) + " !important;\n    }\n\n    .payment-icon-active{\n      color: " + accentColor + " !important;\n    }\n\n    .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {\n      background-color: " + accentColor + " !important;\n    }\n\n    .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {\n      background-color: " + accentColor + " !important;;\n    }\n\n    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{\n      background-color: " + accentColor + " !important;;\n    }\n\n    .mat-form-field.mat-focused.mat-primary .mat-option .mat-option-text,\n    .mat-form-field.mat-focused.mat-primary .mat-select-arrow,\n    .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {\n        color: " + accentColor + " !important;;\n    }\n\n    .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {\n        opacity: 0.03 !important;\n        background-color: " + accentColor + " !important;\n    }\n\n    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{\n      background-color: " + accentColor + " !important;;\n    }\n    ";
+    }
+    if (foregroundColor) {
+        foreGroundStyle = "\n    .bg-white{\n      background-color: " + foregroundColor + " !important;\n    }\n\n    .foreground{\n      background-color: " + foregroundColor + " !important;\n    }\n  ";
+    }
+    if (backgroundColor) {
+        backGroundStyle = "\n     #iframe-container {\n       background-color: " + backgroundColor + " !important;\n     }\n     body{\n      background-color: " + backgroundColor + " !important;\n     }\n    ";
+    }
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
+        var customStyleElement = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#customStyle");
+        if (customStyleElement) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").append('<style id="customStyle"></style>');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#customStyle').append(accentColorStyle + brandColorStyle + foreGroundStyle + backGroundStyle);
+        }
+    });
+};
+
+
+/***/ }),
+
+/***/ "hSg6":
+/*!***********************************************************************************!*\
+  !*** ./src/app/pages/iframe/payment-instruction/payment-instruction.component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: PaymentInstructionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaymentInstructionComponent", function() { return PaymentInstructionComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_services_public_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/public.service */ "7AsR");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var angular_feather__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular-feather */ "8mtn");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ngx-translate/core */ "sYmb");
+
+
+
+
+
+function PaymentInstructionComponent_div_1_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "i-feather", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](10, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 3, "INVOICE.TEXT.INTERACFOLLOWSTEPS"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 5, "INVOICE.TEXT.INTERACSTEP1"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](10, 7, "INVOICE.TEXT.INTERACSTEP2"));
+} }
+function PaymentInstructionComponent_div_1_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "i-feather", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "a", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](10, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](12, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 5, "INVOICE.TEXT.INTERACNEWTAB"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 7, "INVOICE.TEXT.INTERACPOPUP"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("href", ctx_r4.transaction.InteracUrl, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](10, 9, "INVOICE.TEXT.INTERACCLICKHERE"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](12, 11, "INVOICE.TEXT.INTERACOPENAGAIN"));
+} }
+function PaymentInstructionComponent_div_1_div_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "i-feather", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 1, "INVOICE.TEXT.PAYMENTPROCESSED"));
+} }
+function PaymentInstructionComponent_div_1_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "i-feather", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](10, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 3, "INVOICE.TEXT.PAYMENTINITIATED"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 5, "INVOICE.TEXT.LONGTRANSACTIONSMESSAGE"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](10, 7, "INVOICE.TEXT.RECIEVEEMAIL"));
+} }
+function PaymentInstructionComponent_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PaymentInstructionComponent_div_1_div_1_Template, 11, 9, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PaymentInstructionComponent_div_1_div_2_Template, 13, 13, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PaymentInstructionComponent_div_1_div_3_Template, 5, 3, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, PaymentInstructionComponent_div_1_div_4_Template, 11, 9, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.transaction.TransactionMethod === "Interac" && (ctx_r0.transaction.Customer.InteracProvider == "RBC" || ctx_r0.transaction.Customer.InteracProvider == "Desjardins"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.transaction.TransactionMethod === "Interac" && ctx_r0.transaction.Customer.InteracProvider == "PeoplesTrust");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.transaction.TransactionMethod === "CreditCard" || ctx_r0.transaction.TransactionMethod === "VisaDirect");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.transaction.TransactionMethod === "Eft");
+} }
+function PaymentInstructionComponent_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "i-feather", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](10, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 3, "INVOICE.TEXT.PAYMENTINITIATED"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 5, "INVOICE.TEXT.LONGTRANSACTIONSMESSAGE"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](10, 7, "INVOICE.TEXT.RECIEVEEMAIL"));
+} }
+function PaymentInstructionComponent_div_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "i-feather", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 2, "INVOICE.TEXT.SUBSCRIPTIONCREATED"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 4, "INVOICE.TEXT.SUBSCRIPTIONCHARGE"));
+} }
+var PaymentInstructionComponent = /** @class */ (function () {
+    function PaymentInstructionComponent(_publicService) {
+        this._publicService = _publicService;
+        this.transaction = null;
+        this.subscription = null;
+    }
+    PaymentInstructionComponent.prototype.ngOnInit = function () {
+        this._publicService.setShowBackButton(false);
+        this._publicService.setShowBackToPaymentOptionButton(false);
+    };
+    PaymentInstructionComponent.ɵfac = function PaymentInstructionComponent_Factory(t) { return new (t || PaymentInstructionComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_public_service__WEBPACK_IMPORTED_MODULE_1__["PublicService"])); };
+    PaymentInstructionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PaymentInstructionComponent, selectors: [["payment-instruction"]], inputs: { transaction: "transaction", subscription: "subscription" }, decls: 4, vars: 3, consts: [[1, "flex", "justify-center", "text-center", "px-6"], [4, "ngIf"], ["name", "mail", 1, "fill-current", "text-green-400", 2, "height", "100px", "width", "100px"], [1, "mt-3", "font-medium", "text-xl", "leading-7"], [1, "mt-3"], ["name", "layout", 1, "fill-current", "text-yellow-500", 2, "height", "100px", "width", "100px"], ["target", "_blank", 1, "text-green-400", 3, "href"], ["name", "check-circle", 1, "fill-current", "text-green-400", 2, "height", "100px", "width", "100px"], ["name", "clock", 1, "fill-current", "text-yellow-500", 2, "height", "100px", "width", "100px"]], template: function PaymentInstructionComponent_Template(rf, ctx) { if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PaymentInstructionComponent_div_1_Template, 5, 4, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PaymentInstructionComponent_div_2_Template, 11, 9, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PaymentInstructionComponent_div_3_Template, 8, 6, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        } if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.transaction);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.transaction && !ctx.subscription);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.subscription);
+        } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], angular_feather__WEBPACK_IMPORTED_MODULE_3__["FeatherComponent"]], pipes: [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslatePipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwYXltZW50LWluc3RydWN0aW9uLmNvbXBvbmVudC5zY3NzIn0= */"] });
+    return PaymentInstructionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "iXlY":
+/*!********************************************************************************!*\
+  !*** ./src/app/pages/iframe/payment-instruction/payment-instruction.module.ts ***!
+  \********************************************************************************/
+/*! exports provided: PaymentInstructionModule, HttpLoaderFactory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaymentInstructionModule", function() { return PaymentInstructionModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpLoaderFactory", function() { return HttpLoaderFactory; });
+/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngx-translate/http-loader */ "mqiu");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var src_app_app_global_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.global.module */ "uodT");
+/* harmony import */ var _payment_instruction_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./payment-instruction.component */ "hSg6");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+
+var PaymentInstructionModule = /** @class */ (function () {
+    function PaymentInstructionModule() {
+    }
+    PaymentInstructionModule.ɵfac = function PaymentInstructionModule_Factory(t) { return new (t || PaymentInstructionModule)(); };
+    PaymentInstructionModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: PaymentInstructionModule });
+    PaymentInstructionModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ providers: [], imports: [[
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                src_app_app_global_module__WEBPACK_IMPORTED_MODULE_2__["GlobalModule"],
+            ]] });
+    return PaymentInstructionModule;
+}());
+
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](PaymentInstructionModule, { declarations: [_payment_instruction_component__WEBPACK_IMPORTED_MODULE_3__["PaymentInstructionComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+        src_app_app_global_module__WEBPACK_IMPORTED_MODULE_2__["GlobalModule"]], exports: [_payment_instruction_component__WEBPACK_IMPORTED_MODULE_3__["PaymentInstructionComponent"]] }); })();
+function HttpLoaderFactory(http) {
+    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_0__["TranslateHttpLoader"](http);
+}
+
+
+/***/ }),
+
+/***/ "ijhf":
+/*!******************************************************************************************************!*\
+  !*** ./src/app/pages/iframe/forms/visa-debit-form/aggregation-verification/error/error.component.ts ***!
+  \******************************************************************************************************/
+/*! exports provided: ErrorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorComponent", function() { return ErrorComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/models/ConnectErrorCode */ "ugZD");
+/* harmony import */ var src_app_services_page_title_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/page-title.service */ "KN+2");
+/* harmony import */ var src_app_services_event_listener_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/event-listener.service */ "hNKX");
+/* harmony import */ var angular_feather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular-feather */ "8mtn");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
+
+
+
+
+
+function ErrorComponent_p_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.errorSubMessage);
+} }
+function ErrorComponent_p_5_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r1.errorSubMessageSecond);
+} }
+var ErrorComponent = /** @class */ (function () {
+    function ErrorComponent(pageTitleService, eventListenerService) {
+        this.pageTitleService = pageTitleService;
+        this.eventListenerService = eventListenerService;
+        this.errorType = src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].Generic;
+        this.isErrorChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onPageTitleChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onNextStep = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.pageTitle = '';
+        this.errorMessage = '';
+        this.errorSubMessage = '';
+        this.errorSubMessageSecond = '';
+    }
+    ErrorComponent.prototype.ngOnInit = function () {
+        this.buildTextMessages(this.errorType);
+    };
+    ErrorComponent.prototype.buildTextMessages = function (error) {
+        switch (error) {
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].TokenExpired:
+                this.pageTitle = 'Session expired';
+                this.errorMessage = 'This session is over, please try again';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].AggregationFailedToLinkCard:
+                this.pageTitle = 'Bank connection failed';
+                this.errorMessage = 'We can’t connect with your bank right now. None of your banking information was saved, and no money was withdrawn from your bank account.';
+                this.errorSubMessage = 'Please try again later.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].AggregationFailedToFind1Cent:
+                this.pageTitle = 'Account verification failed';
+                this.errorMessage = 'We couldn’t process the $0.01 transaction to verify your bank account. None of your banking information was saved, and no money was withdrawn from your bank account.';
+                this.errorSubMessage = 'Please try again later.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].AggregationFailedToValidateName:
+                this.pageTitle = 'Card not accepted';
+                this.errorMessage = 'The name on your account is different from the name on your Visa Debit bank account. This can’t be accepted for regulatory reasons.';
+                this.errorSubMessage = 'Please use a Visa Debit bank account with the same name as your account, or use another funding method.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].VisaDirectDeclined1Cent:
+                this.pageTitle = 'Incorrect card details';
+                this.errorMessage = 'We couldn’t process the $0.01 transaction to verify your bank account.';
+                this.errorSubMessage = 'Please check your bank account balance and debit card details, then try again.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].VisaDirectNotCADCurrency:
+                this.pageTitle = 'Incorrect account currency';
+                this.errorMessage = 'The card information you entered is for a foreign currency account. Only Canadian dollars (CAD) can be used for instant deposits.';
+                this.errorSubMessage = 'Please enter your Canadian dollar (CAD) Visa Debit card details, or use another funding method.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].VisaDirectNotCanadian:
+                this.pageTitle = 'Incorrect card type';
+                this.errorMessage = 'The card information you entered is for a non-Canadian card. This card type can’t be accepted.';
+                this.errorSubMessage = 'Please enter your Canadian Visa Debit card details, or use another funding method.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].VisaDirectNotDebitCard:
+                this.pageTitle = 'Incorrect card type';
+                this.errorMessage = 'The card information you entered is for a credit card, not a Visa Debit card. This card type can’t be accepted.';
+                this.errorSubMessage = 'Please enter your Visa Debit card details, or use another funding method.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].VisaDirectPullNotEnabled:
+                this.pageTitle = 'Card not accepted';
+                this.errorMessage = 'None of your banking information was saved, and no money was withdrawn from your bank account. ';
+                this.errorSubMessage = 'For more information, please check with your bank.';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].WeekendNotAcceptedInstitution:
+                this.pageTitle = 'Banking information not available';
+                this.errorMessage = 'Please add your debit card during regular banking hours, Monday - Friday, 6am - 10 pm ET.';
+                this.errorSubMessage = 'For more information, please contact your bank';
+                break;
+            case src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_1__["ConnectErrorCode"].VisaDirectRejectedAccountLimitExceeded:
+                this.pageTitle = 'Sorry, your deposit can’t be completed';
+                this.errorMessage = 'Instant deposit funding will be unavailable for the rest of the day.';
+                this.errorSubMessage = 'Given the much higher than expected utilization of this feature we are working to expand our capacity limitations with Visa.';
+                this.errorSubMessageSecond = 'It will be available again at 6 am ET tomorrow. We apologize for the inconvenience.';
+                break;
+            default:
+                this.pageTitle = 'Generic error';
+                this.errorMessage = 'We were not able to process your request right now, please start the process again.';
+                break;
+        }
+        this.eventListenerService.error(error);
+        this.pageTitleService.updatePageTitle(this.pageTitle || '');
+    };
+    ErrorComponent.prototype.onClose = function () {
+        this.eventListenerService.closePopup();
+        return;
+    };
+    ErrorComponent.ɵfac = function ErrorComponent_Factory(t) { return new (t || ErrorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_page_title_service__WEBPACK_IMPORTED_MODULE_2__["PageTitleService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_event_listener_service__WEBPACK_IMPORTED_MODULE_3__["EventListenerService"])); };
+    ErrorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ErrorComponent, selectors: [["app-error"]], inputs: { errorType: "errorType", isError: "isError" }, outputs: { isErrorChange: "isErrorChange", onPageTitleChange: "onPageTitleChange", onNextStep: "onNextStep" }, decls: 11, vars: 3, consts: [[1, "flex", "flex-col", "items-center", "justify-center", "text-center", "md:w-full", "xl:w-full", "2xl:", "w-full"], ["name", "x-circle", 1, "fill-current", "text-red-600", "mb-2", 2, "height", "100px", "width", "100px"], [4, "ngIf"], [1, "w-full", "text-center", "pt-1", "mt-2"], ["type", "button", "mat-raised-button", "", 1, "button", "btn-outline-dark", "w-48", 3, "click"], [1, "center-text-flex"], ["name", "arrow-left", 1, "ml-6"]], template: function ErrorComponent_Template(rf, ctx) { if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "i-feather", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, ErrorComponent_p_4_Template, 2, 1, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, ErrorComponent_p_5_Template, 2, 1, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ErrorComponent_Template_button_click_7_listener() { return ctx.onClose(); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "OK");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "i-feather", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        } if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.errorMessage);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorSubMessage && ctx.errorSubMessage != "");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorSubMessageSecond && ctx.errorSubMessageSecond != "");
+        } }, directives: [angular_feather__WEBPACK_IMPORTED_MODULE_4__["FeatherComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"]], styles: [".error-text[_ngcontent-%COMP%] {\n  font-family: Poppins;\n  font-style: normal;\n  font-weight: 500;\n  font-size: 21px;\n  line-height: 31px;\n}\n\n.icon-size[_ngcontent-%COMP%] {\n  height: 100px;\n  width: 100px;\n}\n\n.btn-outline-dark[_ngcontent-%COMP%] {\n  display: -ms-flexbox;\n  display: flex;\n  border: 1px solid #4b4b4b !important;\n  background-color: transparent;\n  color: #4b4b4b;\n  -ms-flex-pack: justify;\n  justify-content: space-between;\n  margin: auto;\n}\n\n.btn-outline-dark[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  color: #4b4b4b;\n  font-weight: 500;\n  font-size: 14px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uLy4uL2Vycm9yLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0JBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxhQUFBO0VBQ0EsWUFBQTtBQUNGOztBQUVBO0VBQ0Usb0JBQUE7RUFDQSxhQUFBO0VBQ0Esb0NBQUE7RUFDQSw2QkFBQTtFQUNBLGNBQUE7RUFDQSxzQkFBQTtFQUNJLDhCQUFBO0VBQ0osWUFBQTtBQUNGOztBQUFFO0VBQ0UsY0FBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtBQUVKIiwiZmlsZSI6ImVycm9yLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmVycm9yLXRleHQge1xuICBmb250LWZhbWlseTogUG9wcGlucztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogNTAwO1xuICBmb250LXNpemU6IDIxcHg7XG4gIGxpbmUtaGVpZ2h0OiAzMXB4O1xufVxuXG4uaWNvbi1zaXplIHtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgd2lkdGg6IDEwMHB4O1xufVxuXG4uYnRuLW91dGxpbmUtZGFyayB7XG4gIGRpc3BsYXk6IC1tcy1mbGV4Ym94O1xuICBkaXNwbGF5OiBmbGV4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjNGI0YjRiICFpbXBvcnRhbnQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xuICBjb2xvcjogIzRiNGI0YjtcbiAgLW1zLWZsZXgtcGFjazoganVzdGlmeTtcbiAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgbWFyZ2luOiBhdXRvO1xuICBzcGFuIHtcbiAgICBjb2xvcjogIzRiNGI0YjtcbiAgICBmb250LXdlaWdodDogNTAwO1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgfVxufSJdfQ== */"] });
+    return ErrorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "rby6":
+/*!******************************************************************************************************************************************!*\
+  !*** ./src/app/pages/iframe/forms/visa-debit-form/aggregation-verification/aggregation/aggregation-login/aggregation-login.component.ts ***!
+  \******************************************************************************************************************************************/
+/*! exports provided: AggregationLoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AggregationLoginComponent", function() { return AggregationLoginComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/ConnectErrorCode */ "ugZD");
+/* harmony import */ var src_app_models_ConnectGetTokenInformationFor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/models/ConnectGetTokenInformationFor */ "o5uY");
+/* harmony import */ var src_app_services_page_title_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/page-title.service */ "KN+2");
+/* harmony import */ var src_app_services_aggregation_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/aggregation.service */ "DyhI");
+/* harmony import */ var src_app_services_token_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/token.service */ "rj1t");
+/* harmony import */ var src_app_services_terms_conditions_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/terms-conditions.service */ "sj7j");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
+/* harmony import */ var angular_feather__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! angular-feather */ "8mtn");
+/* harmony import */ var _payment_loader_payment_loader_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../payment-loader/payment-loader.component */ "gQKS");
+/* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../error/error.component */ "ijhf");
+/* harmony import */ var _aggregation_terms_aggregation_terms_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../aggregation-terms/aggregation-terms.component */ "3AQj");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ngx-translate/core */ "sYmb");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function AggregationLoginComponent_div_0_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "i", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "p", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](6, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](6, 1, "LABEL.CONNECTERROR"), " ");
+} }
+function AggregationLoginComponent_div_0_mat_form_field_6_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-form-field", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-label", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "input", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 1, "LABEL.BANK"));
+} }
+var _c0 = function (a0) { return { "input-invalid": a0 }; };
+var _c1 = function (a0, a1) { return { "mdi-eye-off-outline": a0, "mdi-eye-outline": a1 }; };
+var _c2 = function (a0) { return { "input-label-invalid": a0 }; };
+function AggregationLoginComponent_div_0_Template(rf, ctx) { if (rf & 1) {
+    var _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "form", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function AggregationLoginComponent_div_0_Template_form_ngSubmit_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.onSubmitLogin(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AggregationLoginComponent_div_0_div_2_Template, 7, 3, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](5, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, AggregationLoginComponent_div_0_mat_form_field_6_Template, 5, 3, "mat-form-field", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-form-field", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-label", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](13, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "input", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](15, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "mat-form-field", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "mat-label", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](22, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "input", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](24, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "i", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AggregationLoginComponent_div_0_Template_i_click_26_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.passwordHide = !ctx_r8.passwordHide; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "label", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "input", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "span", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](33, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "a", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AggregationLoginComponent_div_0_Template_a_click_34_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.onOpenTermsAggregation(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](36, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](38, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "button", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AggregationLoginComponent_div_0_Template_button_click_40_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); var ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r10.onClose(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "span", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "i-feather", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](44, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "button", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AggregationLoginComponent_div_0_Template_button_click_45_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r11.onSubmitLogin(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "span", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](48, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "i-feather", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx_r0.formLogin);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.displayInvalidCredentials);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](5, 20, "LABEL.ENTERCREDENTIALS"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r0.institutionHide);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](13, 22, "LABEL.USERNAME"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("placeholder", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](15, 24, "LABEL.USERNAME"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](40, _c0, ctx_r0.fLogin.Username && ctx_r0.formSubmitted && ctx_r0.fLogin.Username.invalid));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](22, 26, "LABEL.PASSWORD"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("placeholder", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](24, 28, "LABEL.PASSWORD"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("type", ctx_r0.passwordHide ? "password" : "text")("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](42, _c0, ctx_r0.fLogin.Password && ctx_r0.formSubmitted && ctx_r0.fLogin.Password.invalid));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](44, _c1, ctx_r0.passwordHide, !ctx_r0.passwordHide));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](47, _c2, ctx_r0.fLogin.TermsAgreement && ctx_r0.formSubmitted && ctx_r0.fLogin.TermsAgreement.invalid));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](33, 30, "LABEL.IAGRRETO"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](36, 32, "LABEL.IAGRRETO2"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](38, 34, "LABEL.IAGRRETO3"), " ", ctx_r0.customerName, ". ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](44, 36, "LABEL.BACK"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx_r0.formLogin && ctx_r0.formLogin.invalid);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](48, 38, "LABEL.NEXT"));
+} }
+function AggregationLoginComponent_payment_loader_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "payment-loader");
+} }
+function AggregationLoginComponent_app_error_2_Template(rf, ctx) { if (rf & 1) {
+    var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-error", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("isErrorChange", function AggregationLoginComponent_app_error_2_Template_app_error_isErrorChange_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13); var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r12.isError = $event; })("onNextStep", function AggregationLoginComponent_app_error_2_Template_app_error_onNextStep_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13); var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r14.emitStep($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("isError", ctx_r2.isError)("errorType", ctx_r2.errorType);
+} }
+function AggregationLoginComponent_app_aggregation_terms_3_Template(rf, ctx) { if (rf & 1) {
+    var _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-aggregation-terms", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onTermsSelected", function AggregationLoginComponent_app_aggregation_terms_3_Template_app_aggregation_terms_onTermsSelected_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r16); var ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r15.onTermsSelectedEvent($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("customerName", ctx_r3.customerName);
+} }
+var AggregationLoginComponent = /** @class */ (function () {
+    function AggregationLoginComponent(pageTitleService, aggregationService, tokenService, termsConditionsService, cdref) {
+        this.pageTitleService = pageTitleService;
+        this.aggregationService = aggregationService;
+        this.tokenService = tokenService;
+        this.termsConditionsService = termsConditionsService;
+        this.cdref = cdref;
+        this.onNextStep = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onLoad = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.isLoading = false;
+        this.isError = false;
+        this.passwordHide = true;
+        this.institutionHide = false;
+        this.pageTitle = 'Enter your online banking login details';
+        this.displayInvalidCredentials = false;
+        this.formSubmitted = false;
+        this.displayTermsAggregation = false;
+        this.formLogin = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+            Institution: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]({ value: '', disabled: true }, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
+            Username: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
+            Password: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
+            TermsAgreement: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].requiredTrue)
+        });
+        this.pageTitleService.updatePageTitle(this.pageTitle);
+    }
+    Object.defineProperty(AggregationLoginComponent.prototype, "fLogin", {
+        // convenience getter for easy access to form fields
+        get: function () { return this.formLogin.controls; },
+        enumerable: false,
+        configurable: true
+    });
+    AggregationLoginComponent.prototype.emitStep = function (value) {
+        this.onNextStep.emit(value);
+    };
+    AggregationLoginComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.isLoading = true;
+        this.onLoad.emit(true);
+        this.getTokenInformationOutput = this.tokenService.getTokenInformationFromService();
+        this.aggregationAuthenticateSub = this.tokenService.getTokenInformationFromApi(this.getTokenInformationOutput.Token || '', src_app_models_ConnectGetTokenInformationFor__WEBPACK_IMPORTED_MODULE_3__["ConnectGetTokenInformationFor"].Basic)
+            .subscribe(function (response) {
+            _this.getTokenInformationOutput = response.result;
+            _this.isLoading = false;
+            _this.onLoad.emit(false);
+            if (_this.getTokenInformationOutput.Institution == undefined) {
+                _this.isLoading = false;
+                _this.onLoad.emit(false);
+                _this.isError = true;
+                _this.errorType = src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_2__["ConnectErrorCode"].Generic;
+                return;
+            }
+            _this.tokenService.updateTokenInformation(_this.getTokenInformationOutput);
+            _this.fLogin.Institution.patchValue(_this.getTokenInformationOutput.Institution);
+            if (_this.getTokenInformationOutput.Institution == 'FlinksCapital') {
+                _this.fLogin.Username.patchValue('greatday');
+                _this.fLogin.Password.patchValue('everyday');
+            }
+            _this.institutionHide = false;
+            if (_this.getTokenInformationOutput.Institution == 'TD') {
+                _this.institutionHide = true;
+            }
+            _this.handleTermsConditions();
+        });
+    };
+    AggregationLoginComponent.prototype.ngOnDestroy = function () {
+        var _a, _b;
+        (_a = this.getTokenInformationFromApiSub) === null || _a === void 0 ? void 0 : _a.unsubscribe();
+        (_b = this.aggregationAuthenticateSub) === null || _b === void 0 ? void 0 : _b.unsubscribe();
+    };
+    AggregationLoginComponent.prototype.onSubmitLogin = function () {
+        var _this = this;
+        var _a;
+        this.formSubmitted = true;
+        if (this.formLogin.invalid) {
+            return;
+        }
+        this.isLoading = true;
+        this.onLoad.emit(true);
+        this.aggregationService.aggregationAuthenticate(((_a = this.getTokenInformationOutput) === null || _a === void 0 ? void 0 : _a.Token) || '', this.fLogin.Institution.value, this.fLogin.Username.value, this.fLogin.Password.value)
+            .subscribe(function (response) {
+            _this.getTokenInformationOutput = response.result;
+            _this.aggregationAuthorizeOutput = response.result.ConnectAggregationAuthorize;
+            _this.isLoading = false;
+            _this.onLoad.emit(false);
+            if (_this.aggregationService.isOutputInvalidCredentials(_this.getTokenInformationOutput)) {
+                _this.displayInvalidCredentials = true;
+                _this.pageTitleService.updatePageTitle('Enter your online banking login details');
+                return;
+            }
+            if (_this.aggregationService.isOutputInError(_this.getTokenInformationOutput)) {
+                _this.isError = true;
+                _this.errorType = _this.getTokenInformationOutput.ConnectErrorCode;
+                return;
+            }
+            if (_this.aggregationService.isOutputAuthenticated(_this.getTokenInformationOutput)) {
+                _this.emitStep('aggregation-form');
+                return;
+            }
+            if (_this.aggregationService.isOutputMfa(_this.getTokenInformationOutput)) {
+                _this.emitStep('aggregation-mfa');
+                return;
+            }
+            _this.isError = true;
+            _this.errorType = src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_2__["ConnectErrorCode"].AggregationFailedToLinkCard;
+        }, function (error) {
+            _this.isLoading = false;
+            _this.onLoad.emit(false);
+            _this.isError = true;
+            _this.errorType = src_app_models_ConnectErrorCode__WEBPACK_IMPORTED_MODULE_2__["ConnectErrorCode"].AggregationFailedToLinkCard;
+            return;
+        });
+    };
+    AggregationLoginComponent.prototype.onClose = function () {
+        this.emitStep('selectInstitution');
+        return;
+    };
+    AggregationLoginComponent.prototype.onOpenTermsAggregation = function () {
+        this.termsConditionsService.updateDisplayTermsAggregation(true);
+    };
+    AggregationLoginComponent.prototype.onTermsSelectedEvent = function (selected) {
+        this.fLogin.TermsAgreement.setValue(selected);
+        this.termsConditionsService.updateDisplayTermsAggregation(false);
+        this.pageTitleService.updatePageTitle(this.pageTitle);
+        return;
+    };
+    AggregationLoginComponent.prototype.handleTermsConditions = function () {
+        var _this = this;
+        this.termsConditionsService.displayTermsAggregation.subscribe(function (displayTermsAggregation) {
+            _this.displayTermsAggregation = displayTermsAggregation;
+            _this.cdref.detectChanges();
+        });
+    };
+    AggregationLoginComponent.ɵfac = function AggregationLoginComponent_Factory(t) { return new (t || AggregationLoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_page_title_service__WEBPACK_IMPORTED_MODULE_4__["PageTitleService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_aggregation_service__WEBPACK_IMPORTED_MODULE_5__["AggregationService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_token_service__WEBPACK_IMPORTED_MODULE_6__["TokenService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_terms_conditions_service__WEBPACK_IMPORTED_MODULE_7__["TermsConditionsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"])); };
+    AggregationLoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AggregationLoginComponent, selectors: [["app-aggregation-login"]], inputs: { customerName: "customerName" }, outputs: { onNextStep: "onNextStep", onLoad: "onLoad" }, decls: 4, vars: 4, consts: [["class", "page page-institution-login", 4, "ngIf"], [4, "ngIf"], [3, "isError", "errorType", "isErrorChange", "onNextStep", 4, "ngIf"], [3, "customerName", "onTermsSelected", 4, "ngIf"], [1, "page", "page-institution-login"], [3, "formGroup", "ngSubmit"], ["class", "bg-red-100 border-2 border-red-200 rounded px-4 py-3 shadow-md mb-6", "role", "alert", 4, "ngIf"], [1, "text-lg", "pb-2", "font-extrabold", "text-left", "w-full", "page-title"], ["appearance", "outline", 4, "ngIf"], [1, "form-group"], [1, "pt-1", "label-floating"], [1, "relative"], ["appearance", "outline"], [1, "text-black"], ["matInput", "", "maxlength", "100", "formControlName", "Username", 3, "placeholder", "ngClass"], ["matInput", "", "maxlength", "100", "formControlName", "Password", 3, "type", "placeholder", "ngClass"], [1, "absolute", "inset-y-0", "right-0", "pr-3", "flex", "items-center", "text-sm", "leading-5"], [1, "mdi", "text-gray-400", "text-lg", "cursor-pointer", 3, "ngClass", "click"], [1, "pt-1"], [1, "w-full", "pl-1"], [1, "inline-flex", "items-center", "mt-1"], ["type", "checkbox", "id", "termsAgreement", "formControlName", "TermsAgreement", 1, "form-checkbox", "h-5", "text-green-600"], [1, "ml-2", "text-black", "text-xs", 3, "ngClass"], [1, "font-bold", "cursor-pointer", 3, "click"], [1, "w-full", "mt-4", "mb-2", "bg-white", "bottom-0", "flex", "content-center", "text-right", "justify-between", "relative"], ["type", "button", 1, "hover:bg-gray-100", "w-full", "button", "border", "rounded", "shadow", "button-cancel", "focus:outline-non", 3, "click"], [1, "center-text-flex"], ["name", "arrow-left", 1, "mr-4"], ["type", "submit", 1, "button", "button-company-color", "button-text-color", "w-full", "h-auto", "ml-1", "focus:outline-none", 3, "disabled", "click"], ["name", "arrow-right", 1, "ml-4"], ["role", "alert", 1, "bg-red-100", "border-2", "border-red-200", "rounded", "px-4", "py-3", "shadow-md", "mb-6"], [1, "flex"], [1, "mdi", "mdi-information-outline", "text-red-500", "text-lg"], [1, "text-sm", "pl-2"], ["matInput", "", "maxlength", "30", "formControlName", "Institution"], [3, "isError", "errorType", "isErrorChange", "onNextStep"], [3, "customerName", "onTermsSelected"]], template: function AggregationLoginComponent_Template(rf, ctx) { if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, AggregationLoginComponent_div_0_Template, 50, 49, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AggregationLoginComponent_payment_loader_1_Template, 1, 0, "payment-loader", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AggregationLoginComponent_app_error_2_Template, 1, 2, "app-error", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AggregationLoginComponent_app_aggregation_terms_3_Template, 1, 1, "app-aggregation-terms", 3);
+        } if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.displayTermsAggregation && !ctx.isLoading && !ctx.isError);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isLoading);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isLoading && ctx.isError);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.displayTermsAggregation && !ctx.isError);
+        } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatLabel"], _angular_material_input__WEBPACK_IMPORTED_MODULE_10__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgClass"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["CheckboxControlValueAccessor"], angular_feather__WEBPACK_IMPORTED_MODULE_11__["FeatherComponent"], _payment_loader_payment_loader_component__WEBPACK_IMPORTED_MODULE_12__["PaymentLoader"], _error_error_component__WEBPACK_IMPORTED_MODULE_13__["ErrorComponent"], _aggregation_terms_aggregation_terms_component__WEBPACK_IMPORTED_MODULE_14__["AggregationTermsComponent"]], pipes: [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_15__["TranslatePipe"]], styles: [".only-one-error[_ngcontent-%COMP%] {\n  color: #e53e3e;\n}\n\n.only-one-error[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n  display: none;\n}\n\n.only-one-error[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]:first-child {\n  display: block;\n}\n\n .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {\n  color: black !important;\n}\n\nmat-form-field[_ngcontent-%COMP%] {\n  min-height: 85px;\n}\n\n  .mat-form-field-subscript-wrapper {\n  visibility: hidden;\n}\n\n .mat-form-field-appearance-outline.mat-focused.mat-accent .mat-form-field-outline-thick {\n  color: black !important;\n}\n\n .mat-input-element {\n  caret-color: black !important;\n}\n\n .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {\n  background-color: #9e9e9e !important;\n}\n\n.input-invalid[_ngcontent-%COMP%] {\n  border: 2px solid;\n  border-color: #fc8181;\n}\n\ninput[_ngcontent-%COMP%] {\n  background: none;\n}\n\ninput[type=checkbox][_ngcontent-%COMP%] {\n  color: #28C76F;\n  accent-color: currentcolor;\n}\n\ninput[type=radio][_ngcontent-%COMP%] {\n  color: #28C76F;\n  accent-color: currentcolor;\n}\n\n.input-label-invalid[_ngcontent-%COMP%] {\n  color: #fc8181;\n}\n\n.border-color-focus[_ngcontent-%COMP%]:focus {\n  border-color: #000000;\n}\n\n.border-color[_ngcontent-%COMP%] {\n  border-color: #3da542;\n}\n\n.border-color-hover[_ngcontent-%COMP%]:hover {\n  border-color: #3da542;\n}\n\n .button-company-color {\n  background-color: #28C76F;\n}\n\n .button-company-color:disabled {\n  background-color: rgba(40, 199, 111, 0.5);\n  color: #9ba3af;\n}\n\nbody[_ngcontent-%COMP%] {\n  font-family: Poppins;\n  font-style: normal;\n  font-weight: normal;\n  background: #f2f3f4;\n}\n\n.center-text-flex[_ngcontent-%COMP%] {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n  justify-content: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n .foreground {\n  background-color: #fff;\n}\n\n#iframe-container[_ngcontent-%COMP%] {\n  background-color: #f2f3f4;\n}\n\nspan[_ngcontent-%COMP%] {\n  font-size: 14px;\n  line-height: 21px;\n}\n\n.fake-link[_ngcontent-%COMP%] {\n  text-decoration: underline;\n  cursor: pointer;\n}\n\n .accent-color {\n  color: #28c76f;\n}\n\n.bold-text[_ngcontent-%COMP%] {\n  font-weight: 700;\n}\n\n.text-muted[_ngcontent-%COMP%] {\n  color: #b9b9c3;\n}\n\n.card-title[_ngcontent-%COMP%] {\n  font-weight: 500;\n  font-size: 1rem;\n  line-height: 36px;\n  color: #4b4b4b;\n}\n\n.section-separator-top[_ngcontent-%COMP%] {\n  border-top: 1px solid #e9ecef;\n}\n\n.section-separator-top-dashed[_ngcontent-%COMP%] {\n  border-top: 1px dashed #e9ecef;\n}\n\n.product-items-table[_ngcontent-%COMP%] {\n  width: -webkit-fill-available;\n  margin-top: 1.5rem;\n}\n\n.payment-icon[_ngcontent-%COMP%] {\n  width: 45px;\n  height: 45px;\n  min-height: 45px;\n  min-width: 45px;\n  background: rgba(108, 117, 125, 0.12);\n  border-radius: 45px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n  justify-content: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.eft-background[_ngcontent-%COMP%] {\n  background: rgba(108, 117, 125, 0.12) !important;\n  color: #6c757d;\n}\n\n.credit-card-background[_ngcontent-%COMP%] {\n  background: rgba(255, 159, 67, 0.12) !important;\n  color: #ff9f43;\n}\n\n.visa-direct-background[_ngcontent-%COMP%] {\n  background: rgba(0, 207, 232, 0.12) !important;\n  color: #00cfe8;\n}\n\n.interac-background[_ngcontent-%COMP%] {\n  background: rgba(40, 199, 111, 0.12) !important;\n  color: #28c76f;\n}\n\n.icon-color[_ngcontent-%COMP%] {\n  color: #28c76f;\n}\n\n .button-text-color {\n  color: white;\n}\n\n .button-text-color:disabled {\n  color: rgba(148, 148, 148, 0.712);\n}\n\n@media (max-width: 559px) {\n  #scroll-page[_ngcontent-%COMP%] {\n    height: 380px;\n  }\n}\n\n.dropdown-size[_ngcontent-%COMP%] {\n  font-size: 0.76rem;\n}\n\n.powered[_ngcontent-%COMP%] {\n  font-size: 10px;\n  font-family: Raleway;\n}\n\n.powered-logo[_ngcontent-%COMP%] {\n  width: 38.4px;\n  height: 21.95px;\n}\n\n.box-shadow-card[_ngcontent-%COMP%] {\n  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.08);\n  border-radius: 6px;\n}\n\n.max-w-max[_ngcontent-%COMP%] {\n  width: -moz-max-content;\n  width: max-content;\n}\n\n.inline-flex[_ngcontent-%COMP%] {\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n}\n\n.pl-15-p[_ngcontent-%COMP%] {\n  padding-left: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3N0eWxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtBQUNGOztBQUFFO0VBQ0UsYUFBQTtBQUVKOztBQUFFO0VBQ0UsY0FBQTtBQUVKOztBQUVBO0VBRUUsdUJBQUE7QUFBRjs7QUFHQTtFQUNFLGdCQUFBO0FBQUY7O0FBR0E7RUFDRSxrQkFBQTtBQUFGOztBQUdBO0VBRUUsdUJBQUE7QUFERjs7QUFJQTtFQUNFLDZCQUFBO0FBREY7O0FBSUE7RUFDRSxvQ0FBQTtBQURGOztBQUlBO0VBQ0UsaUJBQUE7RUFDQSxxQkFBQTtBQURGOztBQUlBO0VBQ0UsZ0JBQUE7QUFERjs7QUFJQTtFQUNFLGNBQUE7RUFDQSwwQkFBQTtBQURGOztBQUlBO0VBQ0UsY0FBQTtFQUNBLDBCQUFBO0FBREY7O0FBSUE7RUFDRSxjQUFBO0FBREY7O0FBSUE7RUFDRSxxQkFBQTtBQURGOztBQUlBO0VBQ0UscUJBQUE7QUFERjs7QUFJQTtFQUNFLHFCQUFBO0FBREY7O0FBSUE7RUFDRSx5QkFBQTtBQURGOztBQUlBO0VBQ0UseUNBQUE7RUFDQSxjQUFBO0FBREY7O0FBSUE7RUFDRSxvQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtBQURGOztBQUlBO0VBQ0Usb0JBQUE7RUFDQSxhQUFBO0VBQ0EscUJBQUE7RUFDSSx1QkFBQTtFQUNKLHNCQUFBO0VBQ0ksbUJBQUE7QUFETjs7QUFJQTtFQUNFLHNCQUFBO0FBREY7O0FBSUE7RUFDRSx5QkFBQTtBQURGOztBQUlBO0VBQ0UsZUFBQTtFQUNBLGlCQUFBO0FBREY7O0FBSUE7RUFDRSwwQkFBQTtFQUNBLGVBQUE7QUFERjs7QUFJQTtFQUNFLGNBQUE7QUFERjs7QUFJQTtFQUNFLGdCQUFBO0FBREY7O0FBSUE7RUFDRSxjQUFBO0FBREY7O0FBSUE7RUFDRSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLGNBQUE7QUFERjs7QUFJQTtFQUNFLDZCQUFBO0FBREY7O0FBSUE7RUFDRSw4QkFBQTtBQURGOztBQUlBO0VBQ0UsNkJBQUE7RUFDQSxrQkFBQTtBQURGOztBQUlBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxxQ0FBQTtFQUNBLG1CQUFBO0VBQ0Esb0JBQUE7RUFDQSxhQUFBO0VBQ0EscUJBQUE7RUFDSSx1QkFBQTtFQUNKLHNCQUFBO0VBQ0ksbUJBQUE7QUFETjs7QUFJQTtFQUNFLGdEQUFBO0VBQ0EsY0FBQTtBQURGOztBQUlBO0VBQ0UsK0NBQUE7RUFDQSxjQUFBO0FBREY7O0FBSUE7RUFDRSw4Q0FBQTtFQUNBLGNBQUE7QUFERjs7QUFJQTtFQUNFLCtDQUFBO0VBQ0EsY0FBQTtBQURGOztBQUlBO0VBQ0UsY0FBQTtBQURGOztBQUlBO0VBQ0UsWUFBQTtBQURGOztBQUlBO0VBQ0UsaUNBQUE7QUFERjs7QUFJQTtFQUNFO0lBQ0UsYUFBQTtFQURGO0FBQ0Y7O0FBSUE7RUFDRSxrQkFBQTtBQUZGOztBQUtBO0VBQ0UsZUFBQTtFQUNBLG9CQUFBO0FBRkY7O0FBS0E7RUFDRSxhQUFBO0VBQ0EsZUFBQTtBQUZGOztBQUtBO0VBQ0UsNENBQUE7RUFDQSxrQkFBQTtBQUZGOztBQUtBO0VBQ0UsdUJBQUE7RUFDQSxrQkFBQTtBQUZGOztBQUtBO0VBQ0UsMkJBQUE7RUFDQSxvQkFBQTtBQUZGOztBQUtBO0VBQ0Usa0JBQUE7QUFGRiIsImZpbGUiOiJzdHlsZXMuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5vbmx5LW9uZS1lcnJvciB7XG4gIGNvbG9yOiAjZTUzZTNlO1xuICBkaXYge1xuICAgIGRpc3BsYXk6IG5vbmU7XG4gIH1cbiAgZGl2OmZpcnN0LWNoaWxkIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgfVxufVxuXG46Om5nLWRlZXAubWF0LWZvcm0tZmllbGQtYXBwZWFyYW5jZS1vdXRsaW5lLm1hdC1mb2N1c2VkXG4ubWF0LWZvcm0tZmllbGQtb3V0bGluZS10aGljayB7XG4gIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xufVxuXG5tYXQtZm9ybS1maWVsZCB7XG4gIG1pbi1oZWlnaHQ6IDg1cHg7XG59XG5cbjo6bmctZGVlcCAubWF0LWZvcm0tZmllbGQtc3Vic2NyaXB0LXdyYXBwZXIge1xuICB2aXNpYmlsaXR5OiBoaWRkZW47XG59XG5cbjo6bmctZGVlcC5tYXQtZm9ybS1maWVsZC1hcHBlYXJhbmNlLW91dGxpbmUubWF0LWZvY3VzZWQubWF0LWFjY2VudFxuLm1hdC1mb3JtLWZpZWxkLW91dGxpbmUtdGhpY2sge1xuICBjb2xvcjogYmxhY2sgIWltcG9ydGFudDtcbn1cblxuOjpuZy1kZWVwLm1hdC1pbnB1dC1lbGVtZW50IHtcbiAgY2FyZXQtY29sb3I6IGJsYWNrICFpbXBvcnRhbnQ7XG59XG5cbjo6bmctZGVlcC5tYXQtc2xpZGUtdG9nZ2xlLm1hdC1jaGVja2VkIC5tYXQtc2xpZGUtdG9nZ2xlLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM5ZTllOWUgIWltcG9ydGFudDtcbn1cblxuLmlucHV0LWludmFsaWQge1xuICBib3JkZXI6IDJweCBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiAjZmM4MTgxO1xufVxuXG5pbnB1dCB7XG4gIGJhY2tncm91bmQ6IG5vbmU7XG59XG5cbmlucHV0W3R5cGU9XCJjaGVja2JveFwiXSB7XG4gIGNvbG9yOiAjMjhDNzZGO1xuICBhY2NlbnQtY29sb3I6IGN1cnJlbnRjb2xvcjtcbn1cblxuaW5wdXRbdHlwZT1cInJhZGlvXCJdIHtcbiAgY29sb3I6ICMyOEM3NkY7XG4gIGFjY2VudC1jb2xvcjogY3VycmVudGNvbG9yO1xufVxuXG4uaW5wdXQtbGFiZWwtaW52YWxpZCB7XG4gIGNvbG9yOiAjZmM4MTgxO1xufVxuXG4uYm9yZGVyLWNvbG9yLWZvY3VzOmZvY3VzIHtcbiAgYm9yZGVyLWNvbG9yOiAjMDAwMDAwO1xufVxuXG4uYm9yZGVyLWNvbG9yIHtcbiAgYm9yZGVyLWNvbG9yOiAjM2RhNTQyO1xufVxuXG4uYm9yZGVyLWNvbG9yLWhvdmVyOmhvdmVyIHtcbiAgYm9yZGVyLWNvbG9yOiAjM2RhNTQyO1xufVxuXG46Om5nLWRlZXAuYnV0dG9uLWNvbXBhbnktY29sb3Ige1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjhDNzZGO1xufVxuXG46Om5nLWRlZXAuYnV0dG9uLWNvbXBhbnktY29sb3I6ZGlzYWJsZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDQwLCAxOTksIDExMSwgMC41KTtcbiAgY29sb3I6ICM5YmEzYWY7XG59XG5cbmJvZHkge1xuICBmb250LWZhbWlseTogUG9wcGlucztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBiYWNrZ3JvdW5kOiAjZjJmM2Y0O1xufVxuXG4uY2VudGVyLXRleHQtZmxleCB7XG4gIGRpc3BsYXk6IC1tcy1mbGV4Ym94O1xuICBkaXNwbGF5OiBmbGV4O1xuICAtbXMtZmxleC1wYWNrOiBjZW50ZXI7XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgLW1zLWZsZXgtYWxpZ246IGNlbnRlcjtcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbjo6bmctZGVlcC5mb3JlZ3JvdW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbn1cblxuI2lmcmFtZS1jb250YWluZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjJmM2Y0O1xufVxuXG5zcGFuIHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBsaW5lLWhlaWdodDogMjFweDtcbn1cblxuLmZha2UtbGluayB7XG4gIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbjo6bmctZGVlcC5hY2NlbnQtY29sb3Ige1xuICBjb2xvcjogIzI4Yzc2Zjtcbn1cblxuLmJvbGQtdGV4dCB7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG59XG5cbi50ZXh0LW11dGVkIHtcbiAgY29sb3I6ICNiOWI5YzM7XG59XG5cbi5jYXJkLXRpdGxlIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgZm9udC1zaXplOiAxcmVtO1xuICBsaW5lLWhlaWdodDogMzZweDtcbiAgY29sb3I6ICM0YjRiNGI7XG59XG5cbi5zZWN0aW9uLXNlcGFyYXRvci10b3Age1xuICBib3JkZXItdG9wOiAxcHggc29saWQgI2U5ZWNlZjtcbn1cblxuLnNlY3Rpb24tc2VwYXJhdG9yLXRvcC1kYXNoZWQge1xuICBib3JkZXItdG9wOiAxcHggZGFzaGVkICNlOWVjZWY7XG59XG5cbi5wcm9kdWN0LWl0ZW1zLXRhYmxlIHtcbiAgd2lkdGg6IC13ZWJraXQtZmlsbC1hdmFpbGFibGU7XG4gIG1hcmdpbi10b3A6IDEuNXJlbTtcbn1cblxuLnBheW1lbnQtaWNvbiB7XG4gIHdpZHRoOiA0NXB4O1xuICBoZWlnaHQ6IDQ1cHg7XG4gIG1pbi1oZWlnaHQ6IDQ1cHg7XG4gIG1pbi13aWR0aDogNDVweDtcbiAgYmFja2dyb3VuZDogcmdiYSgxMDgsIDExNywgMTI1LCAwLjEyKTtcbiAgYm9yZGVyLXJhZGl1czogNDVweDtcbiAgZGlzcGxheTogLW1zLWZsZXhib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIC1tcy1mbGV4LXBhY2s6IGNlbnRlcjtcbiAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAtbXMtZmxleC1hbGlnbjogY2VudGVyO1xuICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmVmdC1iYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZDogcmdiYSgxMDgsIDExNywgMTI1LCAwLjEyKSAhaW1wb3J0YW50O1xuICBjb2xvcjogcmdiKDEwOCwgMTE3LCAxMjUpO1xufVxuXG4uY3JlZGl0LWNhcmQtYmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAxNTksIDY3LCAwLjEyKSAhaW1wb3J0YW50O1xuICBjb2xvcjogcmdiKDI1NSwgMTU5LCA2Nyk7XG59XG5cbi52aXNhLWRpcmVjdC1iYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAyMDcsIDIzMiwgMC4xMikgIWltcG9ydGFudDtcbiAgY29sb3I6IHJnYigwLCAyMDcsIDIzMik7XG59XG5cbi5pbnRlcmFjLWJhY2tncm91bmQge1xuICBiYWNrZ3JvdW5kOiByZ2JhKDQwLCAxOTksIDExMSwgMC4xMikgIWltcG9ydGFudDtcbiAgY29sb3I6IHJnYig0MCwgMTk5LCAxMTEpO1xufVxuXG4uaWNvbi1jb2xvciB7XG4gIGNvbG9yOiByZ2IoNDAsIDE5OSwgMTExKTtcbn1cblxuOjpuZy1kZWVwLmJ1dHRvbi10ZXh0LWNvbG9yIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG46Om5nLWRlZXAuYnV0dG9uLXRleHQtY29sb3I6ZGlzYWJsZWQge1xuICBjb2xvcjogcmdiYSgxNDgsIDE0OCwgMTQ4LCAwLjcxMik7XG59XG5cbkBtZWRpYSAobWF4LXdpZHRoOiA1NTlweCkge1xuICAjc2Nyb2xsLXBhZ2Uge1xuICAgIGhlaWdodDogMzgwcHg7XG4gIH1cbn1cblxuLmRyb3Bkb3duLXNpemUge1xuICBmb250LXNpemU6IDAuNzZyZW07XG59XG5cbi5wb3dlcmVkIHtcbiAgZm9udC1zaXplOiAxMHB4O1xuICBmb250LWZhbWlseTogUmFsZXdheTtcbn1cblxuLnBvd2VyZWQtbG9nbyB7XG4gIHdpZHRoOiAzOC40cHg7XG4gIGhlaWdodDogMjEuOTVweDtcbn1cblxuLmJveC1zaGFkb3ctY2FyZCB7XG4gIGJveC1zaGFkb3c6IDBweCA2cHggMTJweCByZ2JhKDAsIDAsIDAsIDAuMDgpO1xuICBib3JkZXItcmFkaXVzOiA2cHg7XG59XG5cbi5tYXgtdy1tYXgge1xuICB3aWR0aDogLW1vei1tYXgtY29udGVudDtcbiAgd2lkdGg6IG1heC1jb250ZW50O1xufVxuXG4uaW5saW5lLWZsZXh7XG4gIGRpc3BsYXk6IC1tcy1pbmxpbmUtZmxleGJveDtcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XG59XG5cbi5wbC0xNS1we1xuICBwYWRkaW5nLWxlZnQ6IDE1cHg7XG59Il19 */"] });
+    return AggregationLoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "wpnp":
+/*!*****************************************************!*\
+  !*** ./src/app/services/public-checkout.service.ts ***!
+  \*****************************************************/
+/*! exports provided: PublicCheckoutService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicCheckoutService", function() { return PublicCheckoutService; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "AytR");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+
+var PublicCheckoutService = /** @class */ (function () {
+    function PublicCheckoutService(http) {
+        this.http = http;
+        this.root = "";
+        this.controller = "/publiccheckout";
+        this.root = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+    }
+    PublicCheckoutService.prototype.executeCheckout = function (checkout) {
+        return this.http.post(this.root + this.controller + '/ExecuteCheckout', checkout);
+    };
+    PublicCheckoutService.prototype.ingestAggregationCheckout = function (ingestFromAggregationInputDTO) {
+        return this.http.post(this.root + this.controller + '/IngestFromAggregation', ingestFromAggregationInputDTO);
+    };
+    PublicCheckoutService.prototype.addUserWithAggregationCheckout = function (body) {
+        return this.http.post(this.root + this.controller + '/AddUserWithAggregationCheckout', body);
+    };
+    PublicCheckoutService.ɵfac = function PublicCheckoutService_Factory(t) { return new (t || PublicCheckoutService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
+    PublicCheckoutService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: PublicCheckoutService, factory: PublicCheckoutService.ɵfac, providedIn: 'root' });
+    return PublicCheckoutService;
+}());
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=default~pages-iframe-add-user-wrapper-add-user-wrapper-module~pages-iframe-add-user-wrapper-add-user~528c78f9.js.map
